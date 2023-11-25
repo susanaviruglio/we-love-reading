@@ -8,4 +8,47 @@ body {
     flex: 1 0 auto;
   }
 
+/*profile image stars here*/
+#profile-image {
+  display: block;
+  margin-top: 15px;
+  border: outset;
+  float: left;
+  width: 240px;
+  height:240px;
+}
+/*profile image ends here*/
 
+/* mobile layout stars here */
+
+@media (max-width: 770px) {
+#profile-image {
+  margin-left: -51px;
+}
+}
+
+@media (max-width: 500px) {
+  #profile-image {
+    margin-left: -35px;
+    height: 175px;
+    width: 175px;
+
+  }
+  }
+
+
+  @media (max-width: 387px) {
+    #profile-image {
+      margin-left: -35px;
+      height: 150px;
+      width: 150px;
+  
+    }
+    }
+
+    @media (max-width: 325px) {
+      #profile-image {
+        display:none;
+    
+      }
+      }
