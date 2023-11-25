@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<h3 class="brown-text-text text-darken-4 center-align">User Profile</h3>
+<div class="container">
+    <div class="row">
+        <div class="col s6">
+            <img id="profile-image" src="https://img.freepik.com/premium-photo/colorful-hardcover-books-flying-white-background_495423-28946.jpg?w=740"
+            alt="lots of books with a white background">
+        </div>
+        <div class="col s6">
+            <div class="row">
+            <fieldset> 
+                <legend>First Name</legend> <p>Name</p> 
+                <p><a href="{{ url_for('add_review') }}" class="btn-small #2e7d32 green darken-3">
+                    Edit<i class="fas fa-plus-square right"></i></a></p>
+            </fieldset>
+            </div>
+            <div class="row">
+            <fieldset> 
+                <legend>Last Name</legend> <p>Last Name</p> 
+                <p><a href="{{ url_for('add_review') }}" class="btn-small #2e7d32 green darken-3">
+                    Edit<i class="fas fa-plus-square right"></i></a></p> 
+            </fieldset>
+            </div>
+            <div class="row">
+            <fieldset> 
+                <legend>Email</legend> <p>Email</p>
+                <p><a href="{{ url_for('add_review') }}" class="btn-small #2e7d32 green darken-3">
+                    Edit<i class="fas fa-plus-square right"></i></a></p>
+            </fieldset>
+            </div>
+            <div class="row">
+            <fieldset> 
+                <legend>About me</legend> <p>About me</p>
+                <p><a href="{{ url_for('add_review') }}" class="btn-small #2e7d32 green darken-3">
+                    Edit<i class="fas fa-plus-square right"></i></a></p> 
+            </fieldset>
+            </div>
+            <div class="row">
+            <fieldset> 
+                <legend>Favourite Book</legend> <p>Favourite Book</p>
+                 <p><a href="{{ url_for('add_review') }}" class="btn-small #2e7d32 green darken-3">
+                    Edit<i class="fas fa-plus-square right"></i></a> </p>
+            </fieldset>
+            </div>
+            <div class="row">
+            <fieldset> 
+                <legend>Reviews</legend> 
+                <p><a href="{{ url_for('add_review') }}" class="btn-small #2e7d32 green darken-3">
+                    Add Review<i class="fas fa-plus-square right"></i>
+                </a></p>
+            </fieldset>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
