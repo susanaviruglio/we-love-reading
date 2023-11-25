@@ -9,12 +9,14 @@ class Book(db.Model):
     author = db.Column(db.String, nullable=False)
     year = db.Column(db.Date, nullable=False)
     genre = db.Column(db.String, nullable=False)
+    isbn = db.Column(db.String)
     book_reviews = db.relationship("Review", backref="book", cascade="all, delete", lazy=True)
+    
     
     def __rep__(self):
         # __rep__ to represent itself in the form of a string
-        return "# ISBN: {0} - Title: {1} - Author: {2}".format(
-            self.isbn_number_id, self.title, self.author
+        return "# ID: {0} - Title: {1} - Author: {2} | ISBN: {5}".format(
+            self.id_book, self.title, self.author, self.isbn
         )
     
     
@@ -39,9 +41,8 @@ class Users(db.Model):
 class Review(db.Model):
     # schema for Reviews model
     id = db.Column(db.Integer, primary_key=True)
-    isbn_review = db.Column(db.String, db.ForeignKey("book.id_book", ondelete="CASCADE"),
+    book_id = db.Column(db.String, db.ForeignKey("book.id_book", ondelete="CASCADE"),
     nullable=False)
-    star_rating = db.Column(db.String(4))
     review_text = db.Column(db.Text)
     users_review = db.Column(db.String, db.ForeignKey("users.id_email", ondelete="CASCADE"),nullable=False)
     
@@ -49,5 +50,5 @@ class Review(db.Model):
     def __rep__(self):
         # to represent ISBN in the form of a string
         return "#{0} - ISBN: {1} | Users: {4}".format(
-            self.id , self.isbn_review, self.users_review
+            self.id , self.book_id, self.users_review
         )
