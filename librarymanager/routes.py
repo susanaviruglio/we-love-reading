@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request, redirect, url_for
 from librarymanager import app, db
 from librarymanager.models import Book, Users, Review
 
@@ -13,6 +13,24 @@ def profile():
     return render_template("profile.html")
 
 
+@app.route("/signin-and-signup")
+def signin():
+    return render_template("signin.html")
+
+
 @app.route("/add_review", methods=["GET", "POST"])
 def add_review():
+    """When the user clicks 'Add Review' button in the profile page, this will use the'GET'
+       method and render the 'add_review' template. Once they submit the form, this
+       will call the same function, but will check if the request being made is a “POST“ method,
+       which posts data somewhere, such as a database. """
+    if request.method == "POST":
+        # add a review to the database.
+        # if I use request method I have to import it to flask as well on the top.
+        review = Review(review_text=request.form.get("review_text"))
+        db.session.add(review)
+        db.session.commit()
+        # after the form gets submitted, and I have added and committed 
+        # the new data to our database, I can redirect the user to the 'profile' page.
+        return redirect(url_for("profile"))
     return render_template("add_review.html")
