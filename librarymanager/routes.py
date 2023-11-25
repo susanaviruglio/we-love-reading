@@ -4,5 +4,5 @@ from librarymanager.models import Book, Users, Review
 
 @app.route("/")
 def home():
-    return render_template("signup.html")
+    return render_template("base.html")
     # if I change the name it will become the homepage.
