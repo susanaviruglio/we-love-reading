@@ -4,12 +4,11 @@ from librarymanager import db
  
 class Book(db.Model):
     # schema for Books model
-    id_book = db.Column(db.String, primary_key=True)
+    id_book = db.Column(db.String, unique=True, primary_key=True)
     title = db.Column(db.String, unique=True, nullable=False)
     author = db.Column(db.String, nullable=False)
     year = db.Column(db.Date, nullable=False)
     genre = db.Column(db.String, nullable=False)
-    isbn = db.Column(db.String)
     book_reviews = db.relationship("Review", backref="book", cascade="all, delete", lazy=True)
     
     
@@ -22,9 +21,9 @@ class Book(db.Model):
     
 class Users(db.Model):
     # schema for Users model
-    id_email = db.Column(db.String, primary_key=True)
+    id_email = db.Column(db.String, unique=True, primary_key=True)
     password = db.Column(db.String, nullable=False)
-    fname = db.Column(db.String)
+    fname = db.Column(db.String, nullable=False)
     lname = db.Column(db.String, nullable=False)
     about_me = db.Column(db.Text, nullable=False)
     favourite_book = db.Column(db.String)
@@ -41,10 +40,9 @@ class Users(db.Model):
 class Review(db.Model):
     # schema for Reviews model
     id = db.Column(db.Integer, primary_key=True)
-    book_id = db.Column(db.String, db.ForeignKey("book.id_book", ondelete="CASCADE"),
-    nullable=False)
+    book_id = db.Column(db.String, db.ForeignKey("book.id_book", ondelete="CASCADE"))
     review_text = db.Column(db.Text)
-    users_review = db.Column(db.String, db.ForeignKey("users.id_email", ondelete="CASCADE"),nullable=False)
+    users_review = db.Column(db.String, db.ForeignKey("users.id_email", ondelete="CASCADE"))
     
 
     def __rep__(self):
