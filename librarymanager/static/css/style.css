@@ -2,6 +2,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color:rgb(187, 212, 186);
   }
 
 main {
@@ -18,9 +19,10 @@ h4{
 
 
  /*index images starts here*/
+ 
  .body {
   margin:0;
-  padding:0 35px;
+  padding:40px 35px;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
@@ -79,6 +81,12 @@ h4{
  .sequence img:first-child{
   margin-left: 0px;
  }
+ .after-books img {
+  height:420px;
+  width: cal(100%/3);
+ }
+
+ 
 /* index images ends here*/ 
 /*profile image starts here*/
 #profile-image {
@@ -93,7 +101,18 @@ h4{
 
 /* #profile.user
 /* .profile  ends here*/
+/* sign up starts here*/
+.color-input{
+  font-weight: bold;
+  font-size: 20px;
+  color:rgb(63, 63, 63);
+}
 
+.sign-in{
+  font-weight: bold;
+  color:brown;
+}
+/* sign up ends here*/
 /* mobile layout stars here */
 
 
