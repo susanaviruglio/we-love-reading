@@ -14,8 +14,9 @@ def books():
     return render_template("books.html")
 
 
-@app.route("/signin", methods=["GET", "POST"])
+@app.route("/signup", methods=["GET", "POST"])
 def signup():
+    
     if request.method == "POST":
         users = Users(
             id_email = request.form.get("id_email"),
@@ -26,7 +27,7 @@ def signup():
         db.session.add(users)
         db.session.commit()
         return redirect(url_for("profile"))
-    return render_template("signin.html")
+    return render_template("signup.html")
 
 
 @app.route("/signin", methods=["GET"])
