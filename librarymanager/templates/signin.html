@@ -5,11 +5,11 @@
         <div class="col s12">
             <form  action="{{ url_for('profile') }}" method="GET">
                 <h3 class="brown-text text-darken-4 center-align">Sign In</h3> 
-                <label for="email">Email:</label>
-                <input id="email" type="email" name="id_email" class="validate" required>
-                <label for="password">Password:</label>
+                <label class="color-input for="email">Email:</label>
+                <input  id="email" type="email" name="id_email" class="validate" required>
+                <label class="color-input for="password">Password:</label>
                 <input id="password" type="password" name="password" class="validate" required>
-                <input type="submit">
+                <input type="submit" value="Sign In">
             </form>
         </div>
     </div>

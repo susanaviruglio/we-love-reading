@@ -1,23 +1,6 @@
 # It will store all the data we need for our bookstore.
 from librarymanager import db 
 
- 
-class Book(db.Model):
-    # schema for Books model
-    id_book = db.Column(db.String, unique=True, primary_key=True)
-    title = db.Column(db.String, unique=True, nullable=False)
-    author = db.Column(db.String, nullable=False)
-    year = db.Column(db.Date, nullable=False)
-    genre = db.Column(db.String, nullable=False)
-    book_reviews = db.relationship("Review", backref="book", cascade="all, delete", lazy=True)
-    
-    
-    def __rep__(self):
-        # __rep__ to represent itself in the form of a string
-        return "# ID: {0} - Title: {1} - Author: {2} | ISBN: {5}".format(
-            self.id_book, self.title, self.author, self.isbn
-        )
-    
     
 class Users(db.Model):
     # schema for Users model
@@ -50,3 +33,22 @@ class Review(db.Model):
         return "#{0} - ISBN: {1} | Users: {4}".format(
             self.id , self.book_id, self.users_review
         )
+
+
+class Book(db.Model):
+    # schema for Books model
+    id_book = db.Column(db.String, unique=True, primary_key=True)
+    title = db.Column(db.String, unique=True, nullable=False)
+    author = db.Column(db.String, nullable=False)
+    year = db.Column(db.Date, nullable=False)
+    genre = db.Column(db.String, nullable=False)
+    book_reviews = db.relationship("Review", backref="book", cascade="all, delete", lazy=True)
+    
+    
+    def __rep__(self):
+        # __rep__ to represent itself in the form of a string
+        return "# ID: {0} - Title: {1} - Author: {2} | ISBN: {5}".format(
+            self.id_book, self.title, self.author, self.isbn
+        )
+
+

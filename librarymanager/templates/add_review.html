@@ -7,19 +7,19 @@
             <form method="POST" action="{{ url_for('books') }}">
                 <fieldset> <legend>Book Details</legend>
                     <!----Book review details as Title and Author-->
-                    <label for="title"> Title: </label>
+                    <label class="color-input" for="title"> Title: </label>
                     <input type="text" list="title-list" id="title" name="title" required>
-                    <label for="author"> Author: </label>
+                    <label class="color-input" for="author"> Author: </label>
                     <input type="text" list="author-list" id="author" name="author" required>
-                    <label for="book_id"> ISBN: </label>
+                    <label class="color-input" for="book_id"> ISBN: </label>
                     <input type="text" id="book_id" list="isbn-list" name="book_id" required>
-                    <label for="users_review"> Email: </label>
+                    <label class="color-input" for="users_review"> Email: </label>
                     <input type="email" id="users_review"  name="users_review" required>
 
                 </fieldset>
                 <fieldset> <legend>Review</legend>
                     <!----Book review text and submit button-->
-                    <label for="review_text"> Review: </label>
+                    <label  class="color-input" for="review_text"> Review: </label>
                     <textarea name="review_text" id="review_text" required rows="10" cols="40"></textarea>
                     <button type="submit" class="btn-small #2e7d32 green darken-3">
                         Add Review <i class="fas fa-plus-square right"></i>

@@ -32,6 +32,7 @@ def signup():
 
 @app.route("/signin", methods=["GET"])
 def signin():
+    """
     if request.method == "GET":
         users = Users(
             id_email = request.form.get("id_email"),
@@ -40,6 +41,7 @@ def signin():
         db.session.add(users)
         db.session.commit()
         return redirect(url_for("profile"))
+    """
     return render_template("signin.html")
 
 
