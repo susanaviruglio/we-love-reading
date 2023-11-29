@@ -179,8 +179,8 @@ lord_of_rings_three = Book (
     genre="Fantasy"
 )
 
-#db.session.add(lord_of_rings_one)
-#db.session.add(lord_of_rings_two)
-#db.session.add(lord_of_rings_three)
-#db.session.commit()
+db.session.add(lord_of_rings_one)
+db.session.add(lord_of_rings_two)
+db.session.add(lord_of_rings_three)
+db.session.commit()
 
