@@ -12,8 +12,9 @@ def home():
 
 @app.route("/books", methods=["GET", "POST"])
 def books():
-    
-    return render_template("books.html")
+    books = list(Book.query.order_by(Book.id_book, Book.title, Book.author, Book.year,
+    Book.genre, Book.image, Book.introduction).all())
+    return render_template("books.html", books=books)
 
 
 
