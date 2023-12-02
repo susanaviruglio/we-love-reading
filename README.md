@@ -44,6 +44,9 @@ When I started the project I did it with Visual Code; I had an issue with posgre
 
 Then I moved in Gitpod and I have some issues while I was trying to import my db. I was using the wrong template, instead of using the Gitpod template I was using the Codeanywhere one. I copied all my work and I had to create a new repository.
 
+Trying to insert values to a table:
+While I was trying to test my tables by adding new values, I was receiving an error in my terminal: "sqlalchemy.exc.InvalidRequestError: When initializing mapper mapped class Users->users, expression 'Review' failed to locate a name ('Review'). If this is a class name, consider adding this relationship() to the -class 'bookmanager.models.Users'- class after both dependent classes have been defined." I resolved it by moving the tables around, my first table should have been Review, then Users and Book. Python reads the files from top to bottom, so it does not know something exists until it reaches that point in the file.
+
 ## DEPLOYMENT
 
 ### Github
