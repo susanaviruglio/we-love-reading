@@ -12,6 +12,7 @@ def home():
 
 @app.route("/books", methods=["GET", "POST"])
 def books():
+    
     return render_template("books.html")
 
 
