@@ -21,32 +21,40 @@ def books():
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
-    
+    register = list(Users.query.order_by(Users.id_email, Users.password, Users.lname,
+    Users.fname).all())
     if request.method == "POST":
         users = Users(
             id_email = request.form.get("id_email"),
             password = request.form.get("password"),
             fname = request.form.get("fname"),
-            lname = request.form.get("lname") 
-        )
+            lname = request.form.get("lname")
+            )
         db.session.add(users)
         db.session.commit()
-        return redirect(url_for("profile"))
+        return redirect(url_for("profile"))           
+              
     return render_template("signup.html")
 
 
-@app.route("/signin", methods=["GET"])
+
+@app.route("/signin", methods=["GET", "POST"])
 def signin():
-    """
-    if request.method == "GET":
-        users = Users(
-            id_email = request.form.get("id_email"),
-            password = request.form.get("password"),
-        )
-        db.session.add(users)
-        db.session.commit()
-        return redirect(url_for("profile"))
-    """
+    logins = list(Users.query.order_by(Users.id_email, Users.password).all())
+    if request.method == "POST":
+        email = request.form.get("id_email")
+        password = request.form.get("password")
+
+        user = Users.query.filter_by(id_email=email).first()
+
+        if user and user.check_password(password):
+            # user_exist
+            login_user(user)
+
+            return redirect(url_for("profile"))
+        else:
+            flash("Invalid email or password", "error")
+
     return render_template("signin.html")
 
 
