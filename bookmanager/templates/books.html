@@ -11,6 +11,7 @@
 
         </div>
         <div class="col s12 m6 l6 book-content">
+            <!----books details added in a for loop-->
            <h5>{{ book.title}}</h5>
            <h6>{{ book.author}}</h6>
            <p>ISBN:{{ book.id_book}}</p>
@@ -21,7 +22,14 @@
                 {{book.introduction}}
             </summary>
             <p> Reviews⭐:</p>
-            <p>I highly recommend it!</p>
+            <!-- if the review ISBN is the same as book review, 
+                then it will add the comment to the right book-->
+            {% for review in reviews %}
+            {% if review.book_id == book.id_book  %}
+            <p>{{review.users_review}}</p>
+            <p>{{review.review_text}}</p>
+            {%endif%}
+            {% endfor %}
         </details>
         </div>
     </div>
