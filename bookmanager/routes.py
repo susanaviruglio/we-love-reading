@@ -9,12 +9,13 @@ def home():
     # if I change the name it will become the homepage.
 
 
-
-@app.route("/books", methods=["GET", "POST"])
+@app.route("/books")
 def books():
     books = list(Book.query.order_by(Book.id_book, Book.title, Book.author, Book.year,
     Book.genre, Book.image, Book.introduction).all())
-    return render_template("books.html", books=books)
+    reviews = list(Review.query.order_by(Review.book_id, Review.review_text,
+    Review.users_review).all())
+    return render_template("books.html", books=books, reviews=reviews)
 
 
 
@@ -61,6 +62,8 @@ def add_review():
        method and render the 'add_review' template. Once they submit the form, this
        will call the same function, but will check if the request being made is a “POST“ method,
        which posts data somewhere, such as a database. """
+    books = list(Book.query.order_by(Book.id_book, Book.title, Book.author, Book.year,
+    Book.genre, Book.image, Book.introduction).all())
     if request.method == "POST":
         # add a review to the database.
         # if I use request method I have to import it to flask as well on the top.
@@ -73,5 +76,5 @@ def add_review():
         db.session.commit()
         # after the form gets submitted, and I have added and committed 
         # the new data to our database, I can redirect the user to the 'profile' page.
-        return redirect(url_for("books"))
-    return render_template("add_review.html")
+        return redirect(url_for("add_review"))
+    return render_template("add_review.html", books=books)
