@@ -16,28 +16,38 @@
 <body>
 
     <header>
-        
+       
         <nav class="#3e2723 brown darken-4">
             <div class="nav-wrapper">
             <a href="{{url_for('home')}}" class="brand-logo">We❤️Reading</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
             <ul class="right hide-on-med-and-down">
+                
                 <li><a href="{{url_for('home')}}">Home</a></li>
-                <li><a class="profile-user" href="{{url_for('profile')}}">Profile</a></li>
                 <li><a href="{{url_for('books')}}">Books</a></li>
+                {% if session.get('logged_in') %}
+                <li><a class="profile-user" href="{{url_for('profile')}}">Profile</a></li>
+                <li><a href="{{url_for('logout')}}">Log out</a></li>
+                {% else %}
                 <li><a href="{{url_for('signup')}}">Log in/Sign Up</a></li>
+                {% endif %}
             </ul>
             </div>
         </nav>
-
+      
         <!-----mobile sidenav-->
+        
         <ul class="sidenav" id="mobile-demo">
             <li><a href="{{url_for('home')}}">Home</a></li>
-            <li><a href="{{url_for('profile')}}">Profile</a></li>
             <li><a href="{{url_for('books')}}">Books</a></li>
+            {% if session.get['logged_in'] %}
+            <li><a href="{{url_for('profile')}}">Profile</a></li>
+            <li><a href="{{url_for('logout')}}">Log out</a></li>
+            {% else %}
             <li><a href="{{url_for('signup')}}">Log in/Sign Up</a></li>
-            
+            {% endif %}
         </ul>
+       
     </header>
 
     <main class="container">
