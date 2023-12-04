@@ -1,5 +1,6 @@
 # It will store all the data we need for our bookstore.
-from bookmanager import db
+from bookmanager import app, db
+
 
 
 
@@ -11,7 +12,7 @@ class Review(db.Model):
     users_review = db.Column(db.String, db.ForeignKey("users.id_email", ondelete="CASCADE"))
     
 
-    def __rep__(self):
+    def __repr__(self):
         # to represent ISBN in the form of a string
         return "#{0} - ISBN: {1} | Users: {4}".format(
             self.id , self.book_id, self.users_review
@@ -27,11 +28,12 @@ class Users(db.Model):
     reviews = db.relationship("Review", backref="users", cascade="all,delete", lazy=True)
     
     
-    def __rep__(self):
+    def __repr__(self):
         # to represent the user details in the form of a string
         return "# Email: {0} - Name: {2} - Last Name: {3}".format(
             self.id_email, self.fname, self.lname
         )
+
 
 
 first_user = Users(
@@ -56,7 +58,7 @@ class Book(db.Model):
     image = db.Column(db.String)
     introduction = db.Column(db.String)
     
-    def __rep__(self):
+    def __repr__(self):
         # __rep__ to represent itself in the form of a string
         return "# ID: {0} - Title: {1} - Author: {2} | ISBN: {5}".format(
             self.id_book, self.title, self.author, self.isbn
