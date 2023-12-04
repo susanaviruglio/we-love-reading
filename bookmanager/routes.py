@@ -1,6 +1,8 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash, session
 from bookmanager import app, db
 from bookmanager.models import Book, Users, Review
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 
 @app.route("/")
@@ -18,49 +20,72 @@ def books():
     return render_template("books.html", books=books, reviews=reviews)
 
 
-
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
-    register = list(Users.query.order_by(Users.id_email, Users.password, Users.lname,
-    Users.fname).all())
     if request.method == "POST":
-        users = Users(
-            id_email = request.form.get("id_email"),
-            password = request.form.get("password"),
-            fname = request.form.get("fname"),
-            lname = request.form.get("lname")
-            )
-        db.session.add(users)
+        id_email = request.form.get("id_email")
+        password = request.form.get("password")
+        fname = request.form.get("fname")
+        lname = request.form.get("lname")
+
+        # Hash the password before storing it
+        password_hash = generate_password_hash(password)
+
+        # Create a new Users instance with hashed password
+        user = Users(
+            id_email=id_email,
+            password=password_hash,
+            fname=fname,
+            lname=lname
+        )
+
+        # Add the user to the database
+        db.session.add(user)
         db.session.commit()
-        return redirect(url_for("profile"))           
-              
+
+        return redirect(url_for("profile"))
+
     return render_template("signup.html")
-
-
 
 @app.route("/signin", methods=["GET", "POST"])
 def signin():
-    logins = list(Users.query.order_by(Users.id_email, Users.password).all())
+
     if request.method == "POST":
         email = request.form.get("id_email")
         password = request.form.get("password")
 
         user = Users.query.filter_by(id_email=email).first()
 
-        if user and user.check_password(password):
-            # user_exist
-            login_user(user)
+        if not user:
+            flash('Invalid email address. Please try again.', 'error')
+            return redirect(url_for("signin"))
 
-            return redirect(url_for("profile"))
-        else:
-            flash("Invalid email or password", "error")
+        if not check_password_hash(user.password, password):
+            flash('Invalid password. Please try again.', 'error')
+            return redirect(url_for("signin"))
+
+        # Successful login
+        print("Login successful")
+        session['logged_in'] = True
+        session['user_id'] = user.id_email
+
+        return redirect(url_for('profile'))
 
     return render_template("signin.html")
 
 
+@app.route('/logout')
+def logout():
+    """
+    Function to clear all session data to log out the user,
+    and redirect them to home page
+    """
+    session.clear()  # Clear all session data
+    return redirect(url_for('home'))
+
+
 @app.route("/profile", methods=["GET", "POST"])
 def profile():
-    
     return render_template("profile.html")
 
 
