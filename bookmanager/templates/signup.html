@@ -14,6 +14,15 @@
                 <label class="color-input" for="password">Password:</label>
                 <input id="password" type="password" name="password" class="validate" required>
                 <input type="submit" value="Create account">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flashes flashes-color">
+                          {% for message in messages %}
+                            <li><b>{{ message }}</b></li>
+                        {% endfor %}
+                      </ul>
+                {% endif %}
+                {% endwith %}
                 <p>By creating an account, you agree to the We love Reading 
                     Terms of Service and Privacy Policy.</p>
                 <p>
