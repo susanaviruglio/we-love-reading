@@ -1,3 +1,16 @@
+/*--- Font family from Google fonts-----*/
+
+@font-face {
+  font-family: "potta";
+  src: url("../fonts/potta.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "comfortaa";
+  src: url("../fonts/comfortaa.ttf") format("truetype");
+}
+
+
 body {
     display: flex;
     min-height: 100vh;
@@ -7,6 +20,7 @@ body {
 
 main {
     flex: 1 0 auto;
+    font-family: "comfortaa", Arial, Helvetica, sans-serif;
   }
 
 h3{
@@ -15,6 +29,21 @@ h3{
 
 h4{
   margin-bottom:33px;
+}
+
+.brand-logo {
+  font-family: "potta", Arial, Helvetica, sans-serif;
+  text-shadow: 2px 2px 5px #000000;
+}
+
+.nav-style {
+  font-family: "potta", Arial, Helvetica, sans-serif;
+  text-shadow: 2px 2px 5px #000000;
+}
+
+.mobile-style{
+  font-family: "potta", Arial, Helvetica, sans-serif;
+  text-shadow: 2px 2px 5px rgb(255, 254, 254);
 }
 
 
@@ -97,7 +126,6 @@ h4{
   width: 240px;
   height:240px;
 }
-
 /* .profile  ends here*/
 
 /* books starts here*/
