@@ -31,6 +31,13 @@ def signup():
         # Hash the password before storing it
         password_hash = generate_password_hash(password)
 
+        # Check if the user with the given email already exists
+        existing_user = Users.query.filter_by(id_email=id_email).first()
+
+        if existing_user:
+            flash('Email already in use. Please choose a different email.', 'error')
+            return redirect(url_for("signup"))
+
         # Create a new Users instance with hashed password
         user = Users(
             id_email=id_email,
@@ -42,7 +49,7 @@ def signup():
         # Add the user to the database
         db.session.add(user)
         db.session.commit()
-
+        
         return redirect(url_for("profile"))
 
     return render_template("signup.html")
@@ -86,7 +93,15 @@ def logout():
 
 @app.route("/profile", methods=["GET", "POST"])
 def profile():
-    return render_template("profile.html")
+       # Check if the user is logged in
+    if not session.get('logged_in'):
+        return redirect(url_for('signin'))  # Redirect to the login page if not logged in
+
+        # Fetch the user data from the database
+    user_id = session.get('user_id')
+    user = Users.query.filter_by(id_email=user_id).first()
+
+    return render_template("profile.html", user=user)
 
 
 @app.route("/add_review", methods=["GET", "POST"])
