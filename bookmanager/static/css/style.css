@@ -162,6 +162,11 @@ h4{
   font-weight: bold;
   color:brown;
 }
+
+.flashes-color{
+  color:red;
+  font-family: "potta", Arial, Helvetica, sans-serif;
+}
 /* sign up ends here*/
 /* mobile layout stars here */
 
