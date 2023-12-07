@@ -6,7 +6,7 @@
         <div class="col s12">
             <form method="POST" action="{{ url_for('add_review') }}">
                 <fieldset> <legend class="color-input">Book Details</legend>
-                    <!----Book review details as Title and Author-->
+                    <!--Book review details as Title and Author-->
                     <label class="color-input" for="title"> Title: </label>
                     <input type="text" list="title-list" id="title" name="title" required>
                     <label class="color-input" for="author"> Author: </label>
@@ -18,14 +18,14 @@
 
                 </fieldset>
                 <fieldset> <legend class="color-input">Tell us what you think about the book!</legend>
-                    <!----Book review text and submit button-->
+                    <!--Book review text and submit button-->
                     <label  class="color-input" for="review_text"> Review: </label>
                     <textarea name="review_text" id="review_text" required rows="10" cols="40"></textarea>
                     <button type="submit" class="btn-small #2e7d32 green darken-3">
                         Add Review <i class="fas fa-plus-square right"></i>
                     </button>
                 </fieldset>
-                <!----detail list for the Book Detail section-->
+                <!--detail list for the Book Detail section-->
                 
                 <datalist id="title-list">
                     {% for book in books %}

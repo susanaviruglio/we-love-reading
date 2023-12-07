@@ -17,7 +17,7 @@ def books():
     Book.genre, Book.image, Book.introduction).all())
     reviews = list(Review.query.order_by(Review.book_id, Review.review_text,
     Review.users_review).all())
-    return render_template("books.html", books=books, reviews=reviews)
+    return render_template("books.html", books = books, reviews=reviews)
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -72,7 +72,7 @@ def signin():
             return redirect(url_for("signin"))
 
         # Successful login
-        print("Login successful")
+       
         session['logged_in'] = True
         session['user_id'] = user.id_email
 

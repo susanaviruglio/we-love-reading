@@ -12,7 +12,7 @@ const showHideIcons = () => {
     let scrollWidth = sequence.scrollWidth - sequence.clientWidth; //getting max scrollable width
     arrowIcons[0].style.display = sequence.scrollLeft == 0 ? "none" : "block";
     arrowIcons[1].style.display = sequence.scrollLeft == scrollWidth ? "none" : "block";
-}
+};
 
 arrowIcons.forEach(icon => { 
     icon.addEventListener("click", () => {

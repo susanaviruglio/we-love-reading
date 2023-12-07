@@ -6,12 +6,12 @@
 <div class="container">
     <div class="row book-row">
         <div class="col s12 m6 l6">
-            <img id="book-img" src="{{ book.image}}"
+            <img class="book-img" src="{{ book.image}}"
             alt="harry potter 1 book cover" draggable="false">
 
         </div>
         <div class="col s12 m6 l6 book-content">
-            <!----books details added in a for loop-->
+            <!--books details added in a for loop-->
            <h5>{{ book.title}}</h5>
            <h6>{{ book.author}}</h6>
            <p>ISBN:{{ book.id_book}}</p>
