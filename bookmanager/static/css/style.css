@@ -102,7 +102,7 @@ h4{
 
  .sequence img{
   height: 420px;
-  width: cal(100%/3);
+  width: calc(100%/3);
   object-fit: cover;
   margin-left:14px;
  }
@@ -112,7 +112,6 @@ h4{
  }
  .after-books img {
   height:420px;
-  width: cal(100%/3);
  }
 
  
@@ -130,7 +129,7 @@ h4{
 
 /* books starts here*/
 
-#book-img {
+.book-img {
   width: 250px;
   height: 350px;
   box-shadow: 2px 2px 4px #000000;
@@ -173,7 +172,7 @@ h4{
 
 @media (max-width:900px) {
   .sequence img{
-    width: cal(100%/2);
+    width: calc(100%/2);
    }
   
 }
@@ -196,20 +195,22 @@ h4{
 
 @media (max-width:600px) {
   .row .col.s12 {
-    width: 70%;
-    margin-left: auto;
-    left: auto;
-    right: auto;
+  width: 70%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
   }
+  .after-books img {
+  padding: 10px 8px 0px 63px;
+}
 }
 
 @media (max-width: 500px) {
 
   #profile-image {
-    margin-left: -35px;
-    height: 175px;
-    width: 175px;
-
+  margin-left: -35px;
+  height: 175px;
+  width: 175px;
   }
 
   .sequence img{
@@ -218,12 +219,26 @@ h4{
 
   .book-content {
    width: 100px;
+    }
+
+  nav .brand-logo {
+  font-size: 20px;
 }
 
+.after-books img {
+  padding: 10px 8px 0px 23px;
+  width: 114%;
+  height: 114%;
+}
 
-
-  }
-
+.book-img {
+  width: 200px;
+  height: 288px;
+}
+.row .col.s12 {
+  width: 87%;
+}
+}
 
   @media (max-width: 387px) {
 
