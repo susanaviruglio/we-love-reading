@@ -3,15 +3,13 @@ from bookmanager import app, db
 
 
 
-
 class Review(db.Model):
     # schema for Reviews model
-    id = db.Column(db.Integer, primary_key=True)
-    book_id = db.Column(db.String, db.ForeignKey("book.id_book", ondelete="CASCADE"))
-    review_text = db.Column(db.Text)
-    users_review = db.Column(db.String, db.ForeignKey("users.id_email", ondelete="CASCADE"))
+    id = db.Column(db.Integer, primary_key=True) # the id is an integer
+    book_id = db.Column(db.String, db.ForeignKey("book.id_book", ondelete="CASCADE")) # connected to the book ISBN
+    review_text = db.Column(db.Text) # review information
+    users_review = db.Column(db.String, db.ForeignKey("users.id_email", ondelete="CASCADE")) # user who posts the review
     
-
     def __repr__(self):
         # to represent ISBN in the form of a string
         return "#{0} - ISBN: {1} | Users: {4}".format(
@@ -21,11 +19,11 @@ class Review(db.Model):
 
 class Users(db.Model):
     # schema for Users model
-    id_email = db.Column(db.String, unique=True, primary_key=True)
-    password = db.Column(db.String, nullable=False)
-    fname = db.Column(db.String, nullable=False)
-    lname = db.Column(db.String, nullable=False)
-    reviews = db.relationship("Review", backref="users", cascade="all,delete", lazy=True)
+    id_email = db.Column(db.String, unique=True, primary_key=True) # the id is a string which is the users' email
+    password = db.Column(db.String, nullable=False) # the password which it has been hashed in routes
+    fname = db.Column(db.String, nullable=False) # user first name
+    lname = db.Column(db.String, nullable=False) # user last name
+    reviews = db.relationship("Review", backref="users", cascade="all,delete", lazy=True) # review published
     
     
     def __repr__(self):
@@ -35,28 +33,27 @@ class Users(db.Model):
         )
 
 
-
+# I have created this user to test my user table in the database
 first_user = Users(
     id_email = "hermione@gmail.com",
     password = "witch",
     fname = "Hermione",
     lname = "Granger"
 )
-
-
-db.session.add(first_user)
+# I have added manually and then commented
+# db.session.add(first_user)
 
 
 class Book(db.Model):
     # schema for Books model
-    id_book = db.Column(db.String, unique=True, primary_key=True)
-    title = db.Column(db.String, unique=True, nullable=False)
-    author = db.Column(db.String, nullable=False)
-    year = db.Column(db.Date, nullable=False)
-    genre = db.Column(db.String, nullable=False)
-    book_reviews = db.relationship("Review", backref="book", cascade="all, delete", lazy=True)
-    image = db.Column(db.String)
-    introduction = db.Column(db.String)
+    id_book = db.Column(db.String, unique=True, primary_key=True) # book id is the unique ISBN 
+    title = db.Column(db.String, unique=True, nullable=False) # book title unique
+    author = db.Column(db.String, nullable=False) # book author
+    year = db.Column(db.Date, nullable=False) # book author
+    genre = db.Column(db.String, nullable=False) # book genre
+    book_reviews = db.relationship("Review", backref="book", cascade="all, delete", lazy=True) # reviews related to each book
+    image = db.Column(db.String) # image source from each book (link)
+    introduction = db.Column(db.String) # book introduction
     
     def __repr__(self):
         # __rep__ to represent itself in the form of a string
@@ -137,14 +134,6 @@ harry_potter_seven = Book(
     image = "https://upload.wikimedia.org/wikipedia/en/a/a9/Harry_Potter_and_the_Deathly_Hallows.jpg"
 )
 
-#db.session.add(harry_potter_one)
-#db.session.add(harry_potter_two)
-#db.session.add(harry_potter_three)
-#db.session.add(harry_potter_four)
-#db.session.add(harry_potter_five)
-#db.session.add(harry_potter_six)
-#db.session.add(harry_potter_seven)
-
 after_one = Book(
     id_book = "9783453491168",
     title = "After",
@@ -185,10 +174,6 @@ after_four = Book(
     image = "https://m.media-amazon.com/images/I/71eeR6AxuJL._SL1500_.jpg"
 )
 
-#db.session.add(after_one)
-#db.session.add(after_two)
-#db.session.add(after_three)
-#db.session.add(after_four)
 
 lord_of_rings_one = Book (
     id_book="9780007136599",
@@ -220,6 +205,19 @@ lord_of_rings_three = Book (
     image = "https://i.ebayimg.com/images/g/1xAAAOSwtoFlUDRB/s-l500.jpg"
 )
 
+# I have added then manually and commented to avoid errors
+#db.session.add(harry_potter_one)
+#db.session.add(harry_potter_two)
+#db.session.add(harry_potter_three)
+#db.session.add(harry_potter_four)
+#db.session.add(harry_potter_five)
+#db.session.add(harry_potter_six)
+#db.session.add(harry_potter_seven)
+
+#db.session.add(after_one)
+#db.session.add(after_two)
+#db.session.add(after_three)
+#db.session.add(after_four)
 
 #db.session.add(lord_of_rings_one)
 #db.session.add(lord_of_rings_two)

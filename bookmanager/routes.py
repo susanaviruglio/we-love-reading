@@ -1,7 +1,11 @@
+"""Routes where I have include Flask functionality and imported render_template,
+from bookmanager, I have imported app and db. To get the app running I have created 
+a basic app route to start with which it will be my home page.
+I also had to import flash, session and password security to create the user login"""
 from flask import render_template, request, redirect, url_for, flash, session
 from bookmanager import app, db
 from bookmanager.models import Book, Users, Review
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash 
 
 
 
@@ -13,6 +17,9 @@ def home():
 
 @app.route("/books")
 def books():
+    """I created this variable to create a list where I can query all the data from the Book
+     database, I have added Review table as well because it will appear all the users reviews in
+     each book once submited """
     books = list(Book.query.order_by(Book.id_book, Book.title, Book.author, Book.year,
     Book.genre, Book.image, Book.introduction).all())
     reviews = list(Review.query.order_by(Review.book_id, Review.review_text,
@@ -22,16 +29,19 @@ def books():
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
+    """ Register section for the user to create their own user account, if the user request to Post,
+    then the user would need to fill the form and click submit"""
     if request.method == "POST":
         id_email = request.form.get("id_email")
         password = request.form.get("password")
         fname = request.form.get("fname")
         lname = request.form.get("lname")
 
-        # Hash the password before storing it
+        # Hash the password before storing it to the database so the password is save.
         password_hash = generate_password_hash(password)
 
-        # Check if the user with the given email already exists
+        # Check if the user with the given email already exists, 
+        #  if it exists it will print a message
         existing_user = Users.query.filter_by(id_email=id_email).first()
 
         if existing_user:
@@ -49,33 +59,35 @@ def signup():
         # Add the user to the database
         db.session.add(user)
         db.session.commit()
-        
+        # Once the account it is create it will get redirected to this site.
         return redirect(url_for("profile"))
 
     return render_template("signup.html")
 
 @app.route("/signin", methods=["GET", "POST"])
 def signin():
+    """Login to the users account from the database, if the user request Post, they will need
+    to add email and password from the database"""
 
     if request.method == "POST":
         email = request.form.get("id_email")
         password = request.form.get("password")
 
         user = Users.query.filter_by(id_email=email).first()
-
+        # if the user does not exists it will print this message
         if not user:
             flash('Invalid email address. Please try again.', 'error')
             return redirect(url_for("signin"))
-
+        # if the password is incorrect then it will get this message
         if not check_password_hash(user.password, password):
             flash('Invalid password. Please try again.', 'error')
             return redirect(url_for("signin"))
 
-        # Successful login
+        # Successful login is equal to True, user_id = user.id_email
        
         session['logged_in'] = True
         session['user_id'] = user.id_email
-
+        # once log in it will get to the profile site.
         return redirect(url_for('profile'))
 
     return render_template("signin.html")
@@ -93,6 +105,8 @@ def logout():
 
 @app.route("/profile", methods=["GET", "POST"])
 def profile():
+    """ the user will only see the profile once it is login, if it is not login then profile
+    will be hidden"""
        # Check if the user is logged in
     if not session.get('logged_in'):
         return redirect(url_for('signin'))  # Redirect to the login page if not logged in

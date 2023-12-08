@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<!--Add Review to Books site-->
 <h3 class="brown-text text-darken-4 center-align">New Review</h3>
 <div class="container">
     <div class="row">
@@ -26,19 +27,20 @@
                     </button>
                 </fieldset>
                 <!--detail list for the Book Detail section-->
-                
+                <!-- I created a for loop to add all the book details from the database-->
                 <datalist id="title-list">
-                    {% for book in books %}
+                    {% for book in books %} <!--book title-->
                     <option value="{{book.title}}">{{ book.title }}</option>
                     {% endfor %}
                 </datalist>
                 <datalist id="author-list">
-                    {% for book in books %}
+                    {% for book in books %} <!--book titile which it own author-->
                     <option value="{{book.author}}">{{ book.title }}</option>
                     {% endfor %}
                 </datalist>
                 <datalist id="isbn-list">
-                    {% for book in books %}
+                    {% for book in books %} 
+                    <!--book Id and title so it is easier for the user to identify-->
                     <option value="{{book.id_book}}">{{ book.title }}</option>
                     {% endfor %}
                 </datalist>

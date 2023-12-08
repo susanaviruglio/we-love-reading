@@ -12,9 +12,9 @@
     <title>We Love Reading</title>
 </head>
 <body>
-
+<!--my base html web which it will kept the same in the rest of the pages-->
     <header>
-       
+       <!-- I have used materialize navigation bar-->
         <nav class="#3e2723 brown darken-4">
             <div class="nav-wrapper">
             <a href="{{url_for('home')}}" class="brand-logo">We❤️Reading</a>
@@ -23,17 +23,19 @@
                 
                 <li><a class="nav-style" href="{{url_for('home')}}">Home</a></li>
                 <li><a class="nav-style" href="{{url_for('books')}}">Books</a></li>
+                <!--if the user log in the it will show profile and logout-->
                 {% if session.get('logged_in') %}
                 <li><a class="nav-style"href="{{url_for('profile')}}">Profile</a></li>
                 <li><a class="nav-style" href="{{url_for('logout')}}">Log out</a></li>
                 {% else %}
+                <!-- if the user clicks logout profile and logout will disappear-->
                 <li><a class="nav-style" href="{{url_for('signup')}}">Log in/Sign Up</a></li>
                 {% endif %}
             </ul>
             </div>
         </nav>
       
-        <!--mobile sidenav-->
+        <!--materialize mobile sidenav-->
         
         <ul class="sidenav" id="mobile-demo">
             <li><a class="mobile-style" href="{{url_for('home')}}">Home</a></li>
@@ -55,7 +57,7 @@
         {% endblock %}
 
     </main>
-
+        <!-- footer taken from materialize-->
     <footer class="page-footer #3e2723 brown darken-4">
         <div class="footer-copyright">
             <div class="container">

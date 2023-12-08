@@ -16,6 +16,7 @@
                 <input type="submit" value="Create account">
                 {% with messages = get_flashed_messages() %}
                 {% if messages %}
+                <!-- if the user already exists then it will print a message-->
                     <ul class="flashes flashes-color">
                           {% for message in messages %}
                             <li><b>{{ message }}</b></li>
@@ -25,7 +26,7 @@
                 {% endwith %}
                 <p>By creating an account, you agree to the We love Reading 
                     Terms of Service and Privacy Policy.</p>
-                <p>
+                <p> <!-- if the user already has an account it can sig in here-->
                     Already have an account? <a href="{{ url_for('signin') }}" class="sign-in">Sign in</a></p>
             </form>
         </div>
