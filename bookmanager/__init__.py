@@ -29,4 +29,4 @@ db = SQLAlchemy(app)
 # from the bookmanager package I need to import routes, the reason is imported last,
 # it is because the routes will rely on using app and db respectively 
 # if I try to do it before I will get get circular errors.
-from bookmanager import routes # noqa 
+from bookmanager import routes  
