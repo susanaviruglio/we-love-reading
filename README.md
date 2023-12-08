@@ -69,11 +69,12 @@ Then I moved in Gitpod and I have some issues while I was trying to import my db
 
 **Trying to insert values to a table:**
 
-While I was trying to test my tables by adding new values, I was receiving an error in my terminal: "sqlalchemy.exc.InvalidRequestError: When initializing mapper mapped class Users->users, expression 'Review' failed to locate a name ('Review'). If this is a class name, consider adding this relationship() to the -class 'bookmanager.models.Users'- class after both dependent classes have been defined." I resolved it by moving the tables around, my first table should have been Review, then Users and Book. Python reads the files from top to bottom, so it does not know something exists until it reaches that point in the file.
+While testing my tables by adding new values, I encountered an error in my terminal: "sqlalchemy.exc.InvalidRequestError: When initializing mapper mapped class Users->users, expression 'Review' failed to locate a name ('Review'). If this is a class name, consider adding this relationship() to the -class 'bookmanager.models.Users'- class after both dependent classes have been defined." I resolved it by rearranging the tables. The first table should have been Review, followed by Users and Book. Python reads the files from top to bottom, so it does not recognize something exists until it reaches that point in the file.
 
 **Trying to create an User login**
 
-I was not sure how to create an user login or log up at the beginning because it was the first time that I was working with Flask. So, after trying different methods I found on the internet, I asked for help in Tutor Assistant in Code Institute. He suggested to add this code in my app.route:
+I was unsure how to create a user login or sign-up initially because it was my first time working with Flask. After trying various methods I found on the internet, I sought help from a Tutor Assistant at Code Institute.
+They suggested adding the following code to my app.route:
 
   
     if request.method == "POST":
@@ -90,9 +91,8 @@ I was not sure how to create an user login or log up at the beginning because it
 
     return render_template("signin.html")
 
-Even though I had this code, I found it hard to understand the next steps, so I found support from another student in Slack. He helped me to understand that I should I have imported:
+Even though I had the code, I found it challenging to grasp the next steps. Fortunately, I sought support from another student in Slack. They helped me understand that I should import the following: 
 "from werkzeug.security import generate_password_hash, check_password_hash ", we used it to protect the password from other users.
-
 
 **Adding information to a table**
 
