@@ -1,9 +1,9 @@
 # We ❤️ Reading
 ## Backend Development Milestone Project by Susana Viruglio
 
-[IMAGE FRONT DESIGN HERE] 
-
 Build a book review and recommendation site.
+
+<img src= bookmanager/static/images/presentation.png>
 
 
 ### External User Goals
@@ -129,10 +129,52 @@ You can fork a GitHub Repository to make a copy of the original repository to vi
 5. Type git clone, and paste the link you copied in step 
 6. Press Enter to have the local clone created.
 
-[Web link once deployed]
+[Web link once deployed](https://8080-susanavirug-welovereadi-gj2lk1gp687.ws-eu106.gitpod.io/)
 
 ## HTML AND CSS VALIDATOR
+### HTML
+**Base.html**
+<img src= bookmanager/static/images/check-base-html.png>
 
+**Add Review.html**
+<img src= bookmanager/static/images/check-addreview-html.png>
+
+**Books.html**
+<img src= bookmanager/static/images/check-books-html.png>
+
+**Profile.html**
+<img src= bookmanager/static/images/check-profile-html.png>
+
+**Singin.html**
+<img src= bookmanager/static/images/check-signin-html.png>
+
+**Singup.html**
+<img src= bookmanager/static/images/check-signup-html.png>
+
+### CSS
+<img src= bookmanager/static/images/css-validator.png>
+
+### JAVASCRIPT
+
+**Navigation Bar**
+<img src= bookmanager/static/images/js-validator-nav.png>
+
+**Books index html page**
+<img src= bookmanager/static/images/js-validator-books.png>
+
+### PYTHON
+
+**__init__**
+<img src= bookmanager/static/images/python-check-init.png>
+
+**Routes**
+<img src= bookmanager/static/images/python-check-routes.png>
+
+**Run**
+<img src= bookmanager/static/images/python-check-run.png>
+
+### LIGHTHOUSE
+<img src= bookmanager/static/images/lighthouse.png>
 
 ## CREDITS
 All the code that I have used to create this website was taken from Code Institute learning platform and from the next following sources:
