@@ -129,7 +129,7 @@ You can fork a GitHub Repository to make a copy of the original repository to vi
 5. Type git clone, and paste the link you copied in step 
 6. Press Enter to have the local clone created.
 
-[Web link once deployed](https://8080-susanavirug-welovereadi-gj2lk1gp687.ws-eu106.gitpod.io/)
+[Web link once deployed](https://we-love-reading-ae7806d31b04.herokuapp.com/)
 ### HEROKU and ELEPHANTSQL
 Deploying a Python application on Heroku involves several steps. Here's a general guide:
 If you don't have a Heroku account, sign up for one at Heroku's website.
