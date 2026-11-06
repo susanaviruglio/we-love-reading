@@ -29,3 +29,6 @@ db = SQLAlchemy(app)
 
 # Import routes after creating app and db
 from bookmanager import routes
+
+with app.app_context():
+    db.create_all()
