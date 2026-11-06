@@ -57,14 +57,3 @@ with app.app_context():
 
         db.session.add_all(books)
         db.session.commit()
-
-    # Update the saved image URL for Harry Potter 1
-    book = Book.query.filter_by(id_book="9788869183157").first()
-    if book:
-        book.image = (
-            "https://upload.wikimedia.org/wikipedia/en/6/6b/"
-            "Harry_Potter_and_the_Philosopher%27s_Stone_Book_Cover.jpg"
-        )
-        db.session.commit()
-    else:
-        app.logger.warning("Harry Potter 1 no está en la base de datos.")
