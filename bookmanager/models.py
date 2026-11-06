@@ -70,7 +70,7 @@ harry_potter_one = Book(
     year = "1997-07-26",
     genre = "Fantasy",
     introduction = "Harry Potter thinks he is an ordinary boy - until he is rescued by an owl, taken to Hogwarts School of Witchcraft and Wizardry, learns to play Quidditch and does battle in a deadly duel. The Reason ... HARRY POTTER IS A WIZARD! Find out some reviews!!",
-    image = "https://upload.wikimedia.org/wikipedia/en/6/6b/Harry_Potter_and_the_Philosopher%27s_Stone_Book_Cover.jpg"
+    image = "https://m.media-amazon.com/images/I/81Fyh2mrw5L._SL1500_.jpg"
 )
 
 
