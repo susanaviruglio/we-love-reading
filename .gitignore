@@ -6,4 +6,7 @@ __pycache__/
 *.py[cod]
 node_modules/
 ecloudinary_python.txt
+venv/ .venv/
+
+.venv/
 venv/
