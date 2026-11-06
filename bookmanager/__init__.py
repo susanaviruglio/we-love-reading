@@ -4,6 +4,8 @@ This file initializes the bookmanager application as a package.
 """
 
 import os
+from datetime import datetime
+
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
@@ -28,7 +30,30 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
 # Import routes after creating app and db
-from bookmanager import routes
+from bookmanager import routes  # noqa: E402
+from bookmanager.models import (  # noqa: E402
+    Book,
+    harry_potter_one, harry_potter_two, harry_potter_three,
+    harry_potter_four, harry_potter_five, harry_potter_six,
+    harry_potter_seven,
+    after_one, after_two, after_three, after_four,
+    lord_of_rings_one, lord_of_rings_two, lord_of_rings_three,
+)
 
 with app.app_context():
     db.create_all()
+
+    if Book.query.first() is None:
+        books = [
+            harry_potter_one, harry_potter_two, harry_potter_three,
+            harry_potter_four, harry_potter_five, harry_potter_six,
+            harry_potter_seven,
+            after_one, after_two, after_three, after_four,
+            lord_of_rings_one, lord_of_rings_two, lord_of_rings_three,
+        ]
+
+        for book in books:
+            book.year = datetime.strptime(book.year, "%Y-%m-%d").date()
+
+        db.session.add_all(books)
+        db.session.commit()
